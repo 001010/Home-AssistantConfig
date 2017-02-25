@@ -1,0 +1,14 @@
+  - alias: "Upstairs Motion Notification"
+    trigger:
+      - platform: state
+        entity_id: binary_sensor.multisensorb_sensor_7_0
+        to: 'on'
+    condition:
+      - condition: state
+        entity_id: input_boolean.kid_alarm
+        state: 'on'
+    action:
+      - service: notify.pushbullet
+        data_template:
+          title: "Motion Detected!"
+          message: "Motion Detected Upstairs!"

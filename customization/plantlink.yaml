@@ -1,0 +1,25 @@
+# Plants
+  sensor.plant0_name:
+      friendly_name: Type
+      icon: mdi:leaf
+  sensor.plant0_status:
+      friendly_name: Status
+      icon: mdi:power
+  sensor.plant0_moisture:
+      friendly_name: Moisture
+      icon: mdi:water
+  sensor.plant0_fuel:
+      friendly_name: Fuel
+      icon: mdi:flash
+  sensor.plant0_battery:
+      friendly_name: Battery
+      icon: mdi:battery
+  sensor.plant0_signal:
+      friendly_name: Signal
+      icon: mdi:signal-variant
+  sensor.plant0_next_water:
+      friendly_name: Need Water
+      icon: mdi:update
+  sensor.plant0_last_updated:
+      friendly_name: Updated
+      icon: mdi:update

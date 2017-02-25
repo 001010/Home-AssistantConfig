@@ -1,0 +1,6 @@
+  - name: "Night Mode"
+    entities:
+      light.kitchendimmer_level_8_0: off
+      light.livingroomdimmer_level_9_0:
+        state: on
+        brightness: 20

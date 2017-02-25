@@ -1,0 +1,92 @@
+  - alias: "Stair Lights ON"
+    trigger:
+      - platform: state
+        entity_id: input_boolean.stair_lights
+        to: 'on'
+    action:
+      - service: light.turn_on
+        entity_id:
+        - light.flex_rgbw_01
+        data:
+          brightness: 255
+          transition: 3
+          rgb_color: [255,255,255]
+  - alias: "Stair Lights OFF"
+    trigger:
+      - platform: state
+        entity_id: input_boolean.stair_lights
+        to: 'off'
+    action:
+      - service: light.turn_off
+        entity_id:
+        - light.flex_rgbw_01
+        data:
+          transition: 3
+  - alias: "Stairs Lights on Night Motion"
+    initial_state: true
+    trigger:
+      - platform: state
+        entity_id: binary_sensor.multisensore_sensor_5_0
+        state: 'on'
+      - platform: state
+        entity_id: binary_sensor.multisensorb_sensor_7_0
+        state: 'on'
+    condition:
+      condition: and
+      conditions:
+        - condition: numeric_state
+          entity_id: sensor.multisensorb_luminance_7_3
+          below: 10
+        - condition: numeric_state
+          entity_id: sensor.multisensore_luminance_5_3
+          below: 10
+        - condition: state
+          entity_id: 'sun.sun'
+          state: 'below_horizon'
+    action:
+      - service: light.turn_on
+        entity_id:
+        - light.flex_rgbw_01
+        data:
+          rgb_color: [255,0,150]
+          brightness: 255
+          transition: 3
+      - service: input_boolean.turn_on
+        entity_id:
+        - input_boolean.stair_lights_on
+  - alias: "input boolean stair lights off"
+    trigger:
+      - platform: state
+        entity_id: binary_sensor.multisensore_sensor_5_0
+        to: 'off'
+      - platform: state
+        entity_id: binary_sensor.multisensorb_sensor_7_0
+        to: 'off'
+    condition:
+      condition: and
+      conditions:
+        - condition: state
+          entity_id: input_boolean.stair_lights_on
+          state: 'on'
+        - condition: state
+          entity_id: binary_sensor.multisensore_sensor_5_0
+          state: 'off'
+        - condition: state
+          entity_id: binary_sensor.multisensorb_sensor_7_0
+          state: 'off'
+    action:
+      - delay: 00:01:50
+      - service: light.turn_on
+        entity_id:
+        - light.flex_rgbw_01
+        data:
+          rgb_color: [255,255,255]
+          brightness: 50
+          transition: 2
+      - delay: 00:00:10
+      - service: input_boolean.turn_off
+        entity_id:
+        - input_boolean.stair_lights_on
+      - service: light.turn_off
+        entity_id:
+        - light.flex_rgbw_01

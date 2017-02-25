@@ -1,0 +1,8 @@
+  stair_lights_on:
+    initial: off
+  night_tv_mode:
+    initial: off
+  stair_lights:
+    initial: off
+  kid_alarm:
+    initial: off

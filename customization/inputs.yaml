@@ -1,0 +1,26 @@
+## Emulated Hue items:
+## Must use 'emulated_hue: true' on each item then restart the HA service. Reloading core config and groups will not make this work.
+
+# Inputs
+  input_boolean.night_tv_mode:
+    friendly_name: "Night TV Mode"
+    emulated_hue_name: "Night TV Mode"
+    emulated_hue: true
+    icon: mdi:weather-night
+  input_boolean.stair_lights:
+    emulated_hue_name: "Stair Lights"
+    emulated_hue: true
+    icon: mdi:theme-light-dark
+  input_boolean.kid_alarm:
+    emulated_hue_name: "Kid Alarm"
+    emulated_hue: true
+    icon: mdi:theme-light-dark
+  input_slider.stairs_rgb_r:
+    emulated_hue_name: "Stair Color Red"
+    emulated_hue: true
+  input_slider.stairs_rgb_g:
+    emulated_hue_name: "Stair Color Green"
+    emulated_hue: true
+  input_slider.stairs_rgb_b:
+    emulated_hue_name: "Stair Color Blue"
+    emulated_hue: true

@@ -1,0 +1,7 @@
+  whos_night:
+    name: Who takes care of the kids
+    options:
+     - Tyler
+     - Kristine
+    initial: Tyler
+    icon: mdi:panda

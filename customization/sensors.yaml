@@ -1,0 +1,77 @@
+# Sensors  
+  binary_sensor.multisensore_sensor_5_0:
+    friendly_name: "Entryway Motion"
+    icon: mdi:account-switch
+  sensor.multisensore_temperature_5_1:
+    friendly_name: "Entryway Temperature"
+    icon: mdi:temperature-fahrenheit
+  sensor.multisensore_luminance_5_3:
+    friendly_name: "Entryway Lux"
+    icon: mdi:brightness-6
+  sensor.multisensore_relative_humidity_5_5:
+    friendly_name: "Entryway Humidity"
+    icon: mdi:water-percent
+  
+  binary_sensor.multisensorf_sensor_6_0:
+    friendly_name: "Front Motion"
+    icon: mdi:account-switch
+  sensor.multisensorf_temperature_6_1:
+    friendly_name: "Front Temperature"
+    icon: mdi:temperature-fahrenheit
+  sensor.multisensorf_luminance_6_3:
+    friendly_name: "Front Lux"
+    icon: mdi:brightness-6
+  sensor.multisensorf_relative_humidity_6_5:
+    friendly_name: "Front Humidity"
+    icon: mdi:water-percent
+  
+  binary_sensor.multisensorb_sensor_7_0:
+    friendly_name: "Upstairs Motion"
+    icon: mdi:account-switch
+  sensor.multisensorb_temperature_7_1:
+    friendly_name: "Upstairs Temperature"
+    icon: mdi:temperature-fahrenheit
+  sensor.multisensorb_luminance_7_3:
+    friendly_name: "Upstairs Lux"
+    icon: mdi:brightness-6
+  sensor.multisensorb_relative_humidity_7_5:
+    friendly_name: "Upstairs Humidity"
+    icon: mdi:water-percent
+
+  binary_sensor.bedroomsensor_sensor_15_0:
+    friendly_name: "Bedroom Motion"
+    icon: mdi:account-switch
+  sensor.bedroomsensor_temperature_15_1:
+    friendly_name: "Bedroom Temperature"
+    icon: mdi:temperature-fahrenheit
+  sensor.bedroomsensor_luminance_15_3:
+    friendly_name: "Bedroom Lux"
+    icon: mdi:brightness-6
+  sensor.bedroomsensor_relative_humidity_15_5:
+    friendly_name: "Bedroom Humidity"
+    icon: mdi:water-percent
+  sensor.bedroomsensor_ultraviolet_15_27:
+    friendly_name: "Bedroom UV"
+    icon: mdi:radioactive
+  sensor.bedroomsensor_burglar_15_10:
+    friendly_name: "Bedroom Tamper"
+    icon: mdi:bullhorn
+  input_slider.bedroom_humidity:
+    emulated_hue_name: "bedroom humidity"
+    emulated_hue: true
+    icon: mdi:water-percent
+    
+  sensor.watersensor_flood_14_5:
+    friendly_name: "Leak Sensor"
+    icon: mdi:cup-water
+    
+#Network
+  sensor.speedtest_ping:
+    friendly_name: "Network Ping"
+    icon: mdi:av-timer
+  sensor.speedtest_download:
+    friendly_name: "Download Speed"
+    icon: mdi:download
+  sensor.speedtest_upload:
+    friendly_name: "Upload Speed"
+    icon: mdi:upload

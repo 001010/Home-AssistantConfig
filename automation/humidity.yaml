@@ -1,0 +1,28 @@
+  - alias: "Master Bedroom Humidity ON"
+    trigger:
+      - platform: numeric_state
+        entity_id: sensor.bedroomsensor_relative_humidity_15_5
+        below: 30
+    action:
+      - service: switch.turn_on
+        entity_id:
+        - switch.humidifier_switch_13_0
+  - alias: "Master Bedroom Humidity OFF"
+    trigger:
+      - platform: numeric_state
+        entity_id: sensor.bedroomsensor_relative_humidity_15_5
+        above: 31
+    action:
+      - service: switch.turn_off
+        entity_id:
+        - switch.humidifier_switch_13_0
+  - alias: "Humidity Leak Alarm"
+    trigger:
+      - platform: numeric_state
+        entity_id: sensor.watersensor_flood_14_5
+        above: 250
+    action:
+      - service: notify.pushbullet
+        data_template:
+          title: "HUMIDIFIER LEAK!"
+          message: "HUMIDIFIER LEAK DETECTED!"

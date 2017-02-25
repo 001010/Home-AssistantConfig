@@ -1,0 +1,6 @@
+## Emulated Hue items:
+## Must use 'emulated_hue: true' on each item then restart the HA service. Reloading core config and groups will not make this work.
+
+# Media  
+  media_player.living_room:
+    friendly_name: "Sonos Playbar"

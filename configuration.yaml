@@ -1,0 +1,249 @@
+homeassistant:
+  name: Home
+  unit_system: imperial
+  time_zone: America/Los_Angeles
+  latitude: !secret latitude
+  longitude: !secret longitude
+  elevation: !secret elevation
+  customize: !include_dir_merge_named customization
+
+recorder:
+  purge_days: 30
+
+## Features ##
+# Enables the frontend
+frontend:
+# Checks for available updates
+updater:
+# Discover some devices automatically
+discovery:
+# Allows you to issue voice commands from the frontend in enabled browsers
+conversation:
+# Enables support for tracking state changes over time.
+history:
+# View all events in a logbook
+logbook:
+# Track the sun
+sun:
+# Enables Amazon Echo / Hue functions:
+emulated_hue:
+  expose_by_default: false
+  
+alexa: !include alexa.yaml
+## Groups ##
+group: !include groups.yaml
+## HTTP ##
+http:
+  api_password: !secret http_password
+  ssl_certificate: !secret ssl_certificate
+  ssl_key: !secret ssl_key
+## Scripts ##
+script: !include_dir_merge_list scripts
+## Scenes ##
+scene: !include_dir_merge_list scenes
+## Automation ##
+automation: !include_dir_merge_list automation
+## Inputs ##
+input_boolean: !include input_boolean.yaml
+input_slider: !include input_slider.yaml
+input_select: !include input_select.yaml
+
+## Configurations ##
+zwave:
+  usb_path: /dev/zwave
+  config_path: /srv/homeassistant/src/open-zwave-control-panel/config
+  autoheal: false
+  polling_interval: 60000
+  
+zigbee:
+  device: /dev/ttyUSB0
+  baud: 115200
+
+notify:
+  - name: pushbullet
+    platform: pushbullet
+    api_key: !secret pushbullet
+
+# Weather Prediction
+sensor:
+  - platform: speedtest
+    minute:
+      - 0
+      - 30
+    monitored_conditions:
+      - ping
+      - download
+      - upload
+  - platform: wunderground
+    api_key: !secret wunderground
+    monitored_conditions:
+      - dewpoint_f
+      - feelslike_f
+      - precip_1hr_in
+      - precip_today_in
+      - pressure_in
+      - pressure_trend
+      - relative_humidity
+      - temp_f
+      - UV
+      - visibility_mi
+      - weather
+      - wind_degrees
+      - wind_dir
+      - wind_gust_mph
+      - wind_mph
+  - platform: rest
+    resource: !secret plant0_url
+    method: GET
+    authentication: basic
+    headers:
+      Authorization: !secret plantlink
+    verify_ssl: false
+    name: Plant0 Name
+    value_template: '{{ value_json.name }}'
+  - platform: rest
+    resource: !secret plant0_url
+    method: GET
+    authentication: basic
+    headers:
+      Authorization: !secret plantlink
+    verify_ssl: false
+    name: Plant0 Status
+    value_template: >
+      {% if value_json.status | int == 0 %}Too Dry
+      {% elif value_json.status | int == 1 %}Dry
+      {% elif value_json.status | int == 2 %}Optimal
+      {% elif value_json.status | int == 3 %}Wet
+      {% elif value_json.status | int == 4 %}Too Wet
+      {% else %}value_json.status{% endif %}
+  - platform: rest
+    resource: !secret plant0_url
+    method: GET
+    authentication: basic
+    headers:
+      Authorization: !secret plantlink
+    verify_ssl: false
+    name: Plant0 Moisture
+    sensor_class: moisture
+    unit_of_measurement: '%'
+    value_template: '{{ (value_json.last_measurements[0]["moisture"]) | round(2) * 100 }}'
+  - platform: rest
+    resource: !secret plant0_url
+    method: GET
+    authentication: basic
+    headers:
+      Authorization: !secret plantlink
+    verify_ssl: false
+    name: Plant0 Fuel
+    value_template: '{{ (value_json.last_measurements[0]["plant_fuel_level"]) | round(2) }}'
+  - platform: rest
+    resource: !secret plant0_url
+    method: GET
+    authentication: basic
+    headers:
+      Authorization: !secret plantlink
+    verify_ssl: false
+    name: Plant0 Signal
+    unit_of_measurement: '%'
+    value_template: '{{ (value_json.last_measurements[0]["signal"]) | round(2) * 100 }}'
+  - platform: rest
+    resource: !secret plant0_url
+    method: GET
+    authentication: basic
+    headers:
+      Authorization: !secret plantlink
+    verify_ssl: false
+    name: Plant0 Battery
+    unit_of_measurement: '%'
+    value_template: '{{ (value_json.last_measurements[0]["battery"]) | round(2) * 100 }}'
+  - platform: rest
+    resource: !secret plant0_url
+    method: GET
+    authentication: basic
+    headers:
+      Authorization: !secret plantlink
+    verify_ssl: false
+    name: Plant0 Last Updated
+    value_template: '{{ value_json.last_measurements[0]["updated"] | timestamp_custom("%H:%M:%S %Y/%m/%d", true) }}'
+  - platform: rest
+    resource: !secret plant0_url
+    method: GET
+    authentication: basic
+    headers:
+      Authorization: !secret plantlink
+    verify_ssl: false
+    name: Plant0 Next Water
+    value_template: '{{ value_json.last_measurements[0]["predicted_water_needed"] | timestamp_custom("%H:%M:%S %Y/%m/%d", true) }}'
+
+# Text to speech
+tts:
+  platform: google
+
+device_tracker:
+  platform: owntracks
+
+mqtt:
+  broker: m13.cloudmqtt.com
+  port: 14579
+  client_id: !secret mqtt_client_id
+  keepalive: 60
+  username: !secret mqtt_username
+  password: !secret mqtt_password
+
+zone:
+  name: Home
+  latitude: !secret home_latitude
+  longitude: !secret home_longitude
+  radius: 100
+  icon: mdi:home
+
+zone 2:
+  name: Tyler's Work
+  latitude: !secret tylers_work_latitude
+  longitude: !secret tylers_work_longitude
+  radius: 250
+  icon: mdi:worker
+
+zone 3:
+  name: Kristine's Work
+  latitude: !secret kristines_work_latitude
+  longitude: !secret kristines_work_longitude
+  radius: 100
+  icon: mdi:worker
+
+zone 4:
+  name: Kindercare
+  latitude: !secret daycare_latitude
+  longitude: !secret daycare_longitude
+  radius: 100
+  icon: mdi:human-child
+
+zone 5:
+  name: Elementry School
+  latitude: !secret school_latitude
+  longitude: !secret school_longitude
+  radius: 250
+  icon: mdi:school
+
+logger:
+  default: warning
+  logs:
+    homeassistant.components.device_tracker.mqtt: debug
+
+light:
+  platform: osramlightify
+  host: 192.168.1.130
+  scan_interval: 5
+
+#wink:
+#  access_token: !secret wink
+
+nest:
+  client_id: !secret nest_client_id
+  client_secret: !secret nest_client_secret
+
+ifttt:
+  key: !secret ifttt
+
+media_player:
+  - platform: sonos

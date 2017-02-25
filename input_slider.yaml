@@ -1,0 +1,30 @@
+  default:
+    name: Default
+    initial: 30
+    min: -20
+    max: 35
+    step: 1
+  stairs_rgb_r:
+    name: Stairs_RGB_R
+    initial: 255
+    min: 0
+    max: 255
+    step: 1
+  stairs_rgb_g:
+    name: Stairs_RGB_G
+    initial: 255
+    min: 0
+    max: 255
+    step: 1
+  stairs_rgb_b:
+    name: Stairs_RGB_B
+    initial: 255
+    min: 0
+    max: 255
+    step: 1
+  bedroom_humidity:
+    name: Bedroom_Humidity
+    initial: 30
+    min: 25
+    max: 55
+    step: 1

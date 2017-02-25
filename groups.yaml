@@ -1,0 +1,195 @@
+## Groups
+  default_view:
+    icon: mdi:home
+    entities:
+    - sensor.pws_temp_f
+    - sensor.pws_relative_humidity
+    - sensor.pws_weather
+    - sensor.pws_pressure_in
+    - device_tracker.tyler_tyler
+    - device_tracker.kristine_kristine
+    - group.people
+    - group.sun_center
+    - group.climate
+    - group.downstairs
+    - group.kitchen
+    - group.living_room
+    - group.master_bedroom
+    - group.office
+    - group.garage
+    - updater.updater
+    - group.speedtest
+  Downstairs:
+    name: Downstairs
+    view: yes
+    icon: mdi:numeric-1-box-outline
+    entities:
+    - group.kitchen
+    - group.living_room
+    - group.entryway
+  Upstairs:
+    view: yes
+    icon: mdi:numeric-2-box
+    entities:
+    - group.master_bedroom
+  Upstairs Hall:
+    view: yes
+    icon: mdi:arrow-up-bold-box-outline
+    entities:
+    - group.upstairs_sensor
+  Office:
+    name: Office
+    view: yes
+    icon: mdi:office
+    entities:
+    - group.upstairs_sensor
+    - group.entryway_sensor
+    - group.front_porch_sensor
+  Kitchen:
+    name: Kitchen
+    view: yes
+    icon: mdi:food-variant
+    entities:
+    - group.kitchen_lights
+  Kitchen Lights:
+    entities:
+    - light.kitchendimmer_level_8_0
+    - light.diningdimmer_level_11_0
+  Front Porch Lights:
+    name: Front Porch Lights
+    view: no
+    entities:
+    - switch.frontporchlight_switch_12_0
+    - switch.outdoorswitch_switch_2_0
+  Front Porch:
+    name: Front Porch
+    view: yes
+    icon: mdi:pine-tree-box
+    entities:
+    - switch.frontporchlight_switch_12_0
+    - sensor.pws_temp_f
+    - sensor.pws_relative_humidity
+    - sensor.pws_weather
+    - sensor.pws_pressure_in
+    - group.front_porch_lights
+    - group.front_porch_sensor
+    - group.plant0
+  Stairs:
+    name: Stairs
+    view: yes
+    icon: mdi:stairs
+    entities:
+    - group.stair_lights
+  Entryway:
+    name: Entryway
+    view: yes
+    icon: mdi:swap-horizontal
+    entities:
+    - group.nest
+    - group.entryway_sensor
+    - group.stair_lights
+  Living Room:
+    name: Living Room
+    view: yes
+    icon: mdi:theater
+    entities:
+    - light.livingroomdimmer_level_9_0
+    - media_player.plex_web_chrome
+    - media_player.roku_yy009v221044
+    - media_player.living_room
+  Master Bedroom:
+    name: Master Bedroom
+    view: yes
+    icon: mdi:human-male-female
+    entities:
+    - group.bedroom_sensor
+    - light.lampdimmer_level_10_0
+    - switch.humidifier_switch_13_0
+    - sensor.watersensor_flood_14_5
+    - group.humidifier
+  Garage:
+    name: Garage
+    view: yes
+    icon: mdi:garage
+    entities: 
+    - cover.2car_garage_door_opener
+  People:
+    name: Humans
+    view: yes
+    icon: mdi:account-multiple
+    entities:
+    - device_tracker.tyler_tyler
+    - device_tracker.kristine_kristine
+
+
+## Devices
+  Nest:
+    entities:
+    - sensor.entryway_thermostat_temperature
+    - sensor.entryway_thermostat_target
+    - sensor.entryway_thermostat_humidity
+    - sensor.entryway_thermostat_operation_mode
+    - sensor.entryway_thermostat_hvac_state
+  Upstairs Sensor:
+    entities:
+    - binary_sensor.multisensorb_sensor_7_0
+    - sensor.multisensorb_luminance_7_3
+    - sensor.multisensorb_relative_humidity_7_5
+    - sensor.multisensorb_temperature_7_1
+  Entryway Sensor:
+    entities:
+    - binary_sensor.multisensore_sensor_5_0
+    - sensor.multisensore_luminance_5_3
+    - sensor.multisensore_relative_humidity_5_5
+    - sensor.multisensore_temperature_5_1
+  Front Porch Sensor:
+    entities:
+    - binary_sensor.multisensorf_sensor_6_0
+    - sensor.multisensorf_luminance_6_3
+    - sensor.multisensorf_relative_humidity_6_5
+    - sensor.multisensorf_temperature_6_1
+  Bedroom Sensor:
+    entities:
+    - input_slider.bedroom_humidity
+    - binary_sensor.bedroomsensor_sensor_15_0
+    - sensor.bedroomsensor_temperature_15_1
+    - sensor.bedroomsensor_luminance_15_3
+    - sensor.bedroomsensor_relative_humidity_15_5
+    - sensor.bedroomsensor_ultraviolet_15_27
+    - sensor.bedroomsensor_burglar_15_10
+  Stair Lights:
+    icon: mdi:stairs
+    entities:
+    - light.flex_rgbw_01
+  Plant0:
+    name: Plant
+    entities:
+    - sensor.Plant0_name
+    - sensor.Plant0_status
+    - sensor.Plant0_fuel
+    - sensor.Plant0_moisture
+    - sensor.Plant0_signal
+    - sensor.Plant0_battery
+    - sensor.plant0_next_water
+    - sensor.Plant0_last_updated
+  Humidifer:
+    icon: mdi:water
+    entities:
+    - switch.humidifier_switch_13_0
+    - sensor.watersensor_flood_14_5
+    
+## Sun
+  Sun_Center:
+    name: Information Center
+    entities:
+      - sun.sun
+      - sun.next_rising
+      - sun.next_setting
+
+# System
+  Speedtest:
+    name: Network Speed
+    entities:
+      - sensor.speedtest_ping
+      - sensor.speedtest_download
+      - sensor.speedtest_upload

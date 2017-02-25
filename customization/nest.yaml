@@ -1,0 +1,16 @@
+# Nest stuff    
+  sensor.entryway_thermostat_temperature:
+    icon: mdi:nest-thermostat
+  sensor.entryway_thermostat_humidity:
+    icon: mdi:water-percent
+  
+  sensor.pws_temp_f:
+    friendly_name: "Outside Tempurature"
+    icon: mdi:temperature-fahrenheit
+  sensor.pws_relative_humidity:
+    friendly_name: "Outside Humidity"
+    icon: mdi:water-percent
+  sensor.pws_weather:
+    friendly_name: "Weather"
+  sensor.pws_pressure_in:
+    friendly_name: "Pressure"

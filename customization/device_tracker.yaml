@@ -1,0 +1,5 @@
+# Device Trackers
+  device_tracker.kristine_kristine:
+    icon: mdi:cellphone-android
+  device_tracker.tyler_tyler:
+    icon: mdi:cellphone-android
