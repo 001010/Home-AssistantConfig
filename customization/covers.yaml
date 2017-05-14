@@ -1,0 +1,9 @@
+## Emulated Hue items:
+## Must use 'emulated_hue: true' on each item then restart the HA service. Reloading core config and groups will not make this work.
+
+# Covers  
+  cover.2car_garage_door_opener:
+    friendly_name: "Garage Door"
+    emulated_hue_name: "Garage Door"
+    emulated_hue: true
+    icon: mdi:garage    

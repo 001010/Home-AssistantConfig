@@ -18,7 +18,7 @@
     friendly_name: "Living Room Lights"
     emulated_hue_name: "living room light"
     emulated_hue: true
-  light.flex_rgbw_01:
+  light.rgbw_stairs:
     friendly_name: "Stair Lights"
   switch.frontporchlight_switch_12_0:
     friendly_name: "Front Porch Light"

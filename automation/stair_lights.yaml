@@ -6,7 +6,7 @@
     action:
       - service: light.turn_on
         entity_id:
-        - light.flex_rgbw_01
+        - light.rgbw_stairs
         data:
           brightness: 255
           transition: 3
@@ -19,9 +19,10 @@
     action:
       - service: light.turn_off
         entity_id:
-        - light.flex_rgbw_01
+        - light.rgbw_stairs
         data:
-          transition: 3
+          brightness: 255
+          transition: 2
   - alias: "Stairs Lights on Night Motion"
     initial_state: true
     trigger:
@@ -34,27 +35,30 @@
     condition:
       condition: and
       conditions:
-        - condition: numeric_state
-          entity_id: sensor.multisensorb_luminance_7_3
-          below: 10
-        - condition: numeric_state
-          entity_id: sensor.multisensore_luminance_5_3
-          below: 10
-        - condition: state
-          entity_id: 'sun.sun'
-          state: 'below_horizon'
+        - condition: template
+          value_template: '{{ states.sun.sun.attributes.elevation < 4 }}'
+        # - condition: numeric_state
+          # entity_id: sensor.multisensorb_luminance_7_3
+          # below: 5
+        # - condition: numeric_state
+          # entity_id: sensor.multisensore_luminance_5_3
+          # below: 5
     action:
+      - service: automation.turn_off
+        entity_id: automation.motion_stair_lights_off
       - service: light.turn_on
         entity_id:
-        - light.flex_rgbw_01
+        - light.rgbw_stairs
         data:
-          rgb_color: [255,0,150]
+          rgb_color: [255,0,0]
           brightness: 255
-          transition: 3
+          transition: 2
+      - service: automation.turn_on
+        entity_id: automation.motion_stair_lights_off
       - service: input_boolean.turn_on
         entity_id:
         - input_boolean.stair_lights_on
-  - alias: "input boolean stair lights off"
+  - alias: "motion_stair_lights_off"
     trigger:
       - platform: state
         entity_id: binary_sensor.multisensore_sensor_5_0
@@ -78,10 +82,10 @@
       - delay: 00:01:50
       - service: light.turn_on
         entity_id:
-        - light.flex_rgbw_01
+        - light.rgbw_stairs
         data:
-          rgb_color: [255,255,255]
-          brightness: 50
+          rgb_color: [255,0,0]
+          brightness: 255
           transition: 2
       - delay: 00:00:10
       - service: input_boolean.turn_off
@@ -89,4 +93,4 @@
         - input_boolean.stair_lights_on
       - service: light.turn_off
         entity_id:
-        - light.flex_rgbw_01
+        - light.rgbw_stairs

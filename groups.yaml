@@ -1,13 +1,15 @@
 ## Groups
   default_view:
+    view: yes
     icon: mdi:home
     entities:
+    - group.Date_Time
     - sensor.pws_temp_f
     - sensor.pws_relative_humidity
     - sensor.pws_weather
     - sensor.pws_pressure_in
-    - device_tracker.tyler_tyler
-    - device_tracker.kristine_kristine
+    - group.track_tyler
+    - group.track_kristine
     - group.people
     - group.sun_center
     - group.climate
@@ -19,11 +21,18 @@
     - group.garage
     - updater.updater
     - group.speedtest
+    - group.ssl_certificate
+  Date_Time:
+    name: "Date & Time"
+    entities:
+    - sensor.date__time
+    - sensor.time_utc
   Downstairs:
     name: Downstairs
     view: yes
     icon: mdi:numeric-1-box-outline
     entities:
+    - group.entryway_sensor
     - group.kitchen
     - group.living_room
     - group.entryway
@@ -31,6 +40,7 @@
     view: yes
     icon: mdi:numeric-2-box
     entities:
+    - group.upstairs_sensor
     - group.master_bedroom
   Upstairs Hall:
     view: yes
@@ -42,15 +52,20 @@
     view: yes
     icon: mdi:office
     entities:
+    - light.rgbw_desk
     - group.upstairs_sensor
     - group.entryway_sensor
     - group.front_porch_sensor
+    - sensor.tyler_to_home
+    - sensor.tyler_to_work
+    - sensor.kristine_to_home
   Kitchen:
     name: Kitchen
     view: yes
     icon: mdi:food-variant
     entities:
     - group.kitchen_lights
+    - group.water_sensor
   Kitchen Lights:
     entities:
     - light.kitchendimmer_level_8_0
@@ -85,7 +100,7 @@
     view: yes
     icon: mdi:swap-horizontal
     entities:
-    - group.nest
+    - climate.entryway
     - group.entryway_sensor
     - group.stair_lights
   Living Room:
@@ -105,7 +120,6 @@
     - group.bedroom_sensor
     - light.lampdimmer_level_10_0
     - switch.humidifier_switch_13_0
-    - sensor.watersensor_flood_14_5
     - group.humidifier
   Garage:
     name: Garage
@@ -118,9 +132,21 @@
     view: yes
     icon: mdi:account-multiple
     entities:
-    - device_tracker.tyler_tyler
-    - device_tracker.kristine_kristine
-
+    - group.tyler
+    - group.kristine
+  Routines:
+    view: yes
+    icon: mdi:code-tags-check
+    entities:
+      - automation.turn_on_light_when_sun_sets
+      - automation.turn_off_light_when_sun_rises
+      - automation.turn_on_holiday_light_when_sunset
+      - automation.stairs_lights_on_night_motion
+      - automation.night_tv_mode
+      - automation.upstairs_motion_notification
+      - automation.humidity_leak_alarm
+      - automation.master_bedroom_humidity_off
+      - automation.master_bedroom_humidity_on
 
 ## Devices
   Nest:
@@ -136,18 +162,21 @@
     - sensor.multisensorb_luminance_7_3
     - sensor.multisensorb_relative_humidity_7_5
     - sensor.multisensorb_temperature_7_1
+    - sensor.zwave_multisensorb_battery_level_7
   Entryway Sensor:
     entities:
     - binary_sensor.multisensore_sensor_5_0
     - sensor.multisensore_luminance_5_3
     - sensor.multisensore_relative_humidity_5_5
     - sensor.multisensore_temperature_5_1
+    - sensor.zwave_multisensore_battery_level_5
   Front Porch Sensor:
     entities:
     - binary_sensor.multisensorf_sensor_6_0
     - sensor.multisensorf_luminance_6_3
     - sensor.multisensorf_relative_humidity_6_5
     - sensor.multisensorf_temperature_6_1
+    - sensor.zwave_multisensorf_battery_level_6
   Bedroom Sensor:
     entities:
     - input_slider.bedroom_humidity
@@ -157,10 +186,15 @@
     - sensor.bedroomsensor_relative_humidity_15_5
     - sensor.bedroomsensor_ultraviolet_15_27
     - sensor.bedroomsensor_burglar_15_10
+    - sensor.zwave_bedroomsensor_battery_level_15
+  Water Sensor:
+    entities:
+    - sensor.watersensor_flood_14_5
+    - sensor.zwave_watersensor_battery_level_14
   Stair Lights:
     icon: mdi:stairs
     entities:
-    - light.flex_rgbw_01
+    - light.rgbw_stairs
   Plant0:
     name: Plant
     entities:
@@ -177,19 +211,32 @@
     entities:
     - switch.humidifier_switch_13_0
     - sensor.watersensor_flood_14_5
+  track_Tyler:
+    name: Tyler
+    entities:
+    - device_tracker.tyler_bt
+    - device_tracker.tyler_tyler
+  track_Kristine:
+    name: Kristine
+    entities:
+    - device_tracker.kristine_bt
+    - device_tracker.kristine_kristine
     
 ## Sun
   Sun_Center:
     name: Information Center
     entities:
-      - sun.sun
-      - sun.next_rising
-      - sun.next_setting
+    - sun.sun
+    - sun.next_rising
+    - sun.next_setting
 
 # System
+  SSL Certificate:
+    entities:
+    - sensor.ssl_expires
   Speedtest:
     name: Network Speed
     entities:
-      - sensor.speedtest_ping
-      - sensor.speedtest_download
-      - sensor.speedtest_upload
+    - sensor.speedtest_ping
+    - sensor.speedtest_download
+    - sensor.speedtest_upload

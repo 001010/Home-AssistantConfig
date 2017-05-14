@@ -25,6 +25,7 @@
       - service: switch.turn_off
         entity_id:
           - switch.frontporchlight_switch_12_0
+          - switch.outdoorswitch_switch_2_0
   - alias: "Turn on holiday light when sunset"
     trigger:
       platform: sun

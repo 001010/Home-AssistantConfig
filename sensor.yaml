@@ -1,0 +1,164 @@
+  - platform: speedtest
+    minute:
+      - 0
+      - 30
+    monitored_conditions:
+      - ping
+      - download
+      - upload
+  - platform: wunderground
+    api_key: !secret wunderground
+    monitored_conditions:
+      - dewpoint_f
+      - feelslike_f
+      - precip_1hr_in
+      - precip_today_in
+      - pressure_in
+      - relative_humidity
+      - temp_f
+      - weather
+      - wind_degrees
+      - wind_dir
+  - platform: time_date
+    display_options:
+      - 'time'
+      - 'date'
+      - 'date_time'
+      - 'time_utc'
+  - platform: command_line
+    name: SSL expires
+    unit_of_measurement: days
+    scan_interval: 86400
+    command: "/usr/bin/ssl-cert-check -b -c /etc/letsencrypt/live/tylerrodgers.ddns.net/cert.pem | awk '{ print $NF }'"      
+#Templates
+  - platform: template
+    sensors:
+      zwave_bedroomsensor_battery_level_15:
+        unit_of_measurement: '%'
+        friendly_name: "Battery Level"
+        icon_template: mdi:battery
+        value_template: '{{ states.zwave.bedroomsensor_15.attributes.battery_level }}'
+      zwave_multisensorb_battery_level_7:
+        unit_of_measurement: '%'
+        friendly_name: "Battery Level"
+        icon_template: mdi:battery
+        value_template: '{{ states.zwave.multisensorb_7.attributes.battery_level }}'
+      zwave_multisensore_battery_level_5:
+        unit_of_measurement: '%'
+        friendly_name: "Battery Level"
+        icon_template: mdi:battery
+        value_template: '{{ states.zwave.multisensore_5.attributes.battery_level }}'
+      zwave_multisensorf_battery_level_6:
+        unit_of_measurement: '%'
+        friendly_name: "Battery Level"
+        icon_template: mdi:battery
+        value_template: '{{ states.zwave.multisensorf_6.attributes.battery_level }}'
+      zwave_watersensor_battery_level_14:
+        unit_of_measurement: '%'
+        friendly_name: "Battery Level"
+        icon_template: mdi:battery
+        value_template: '{{ states.zwave.watersensor_14.attributes.battery_level }}'
+#Google Travel
+  - platform: google_travel_time
+    name: Tyler to Work
+    api_key: !secret google_travel_api_key
+    origin: device_tracker.tyler_tyler
+    destination: zone.tylers_work
+  - platform: google_travel_time
+    name: Kristine to Work
+    api_key: !secret google_travel_api_key
+    origin: device_tracker.kristine_kristine
+    destination: zone.kristines_work
+  - platform: google_travel_time
+    name: Tyler to Home
+    api_key: !secret google_travel_api_key
+    origin: device_tracker.tyler_tyler
+    destination: zone.home
+  - platform: google_travel_time
+    name: Kristine to Home
+    api_key: !secret google_travel_api_key
+    origin: device_tracker.kristine_kristine
+    destination: zone.home
+#PlantLink
+  # - platform: rest
+    # resource: !secret plant0_url
+    # method: GET
+    # authentication: basic
+    # headers:
+      # Authorization: !secret plantlink
+    # verify_ssl: false
+    # name: Plant0 Name
+    # value_template: '{{ value_json.name }}'
+  # - platform: rest
+    # resource: !secret plant0_url
+    # method: GET
+    # authentication: basic
+    # headers:
+      # Authorization: !secret plantlink
+    # verify_ssl: false
+    # name: Plant0 Status
+    # value_template: >
+      # {% if value_json.status | int == 0 %}Too Dry
+      # {% elif value_json.status | int == 1 %}Dry
+      # {% elif value_json.status | int == 2 %}Optimal
+      # {% elif value_json.status | int == 3 %}Wet
+      # {% elif value_json.status | int == 4 %}Too Wet
+      # {% else %}value_json.status{% endif %}
+  # - platform: rest
+    # resource: !secret plant0_url
+    # method: GET
+    # authentication: basic
+    # headers:
+      # Authorization: !secret plantlink
+    # verify_ssl: false
+    # name: Plant0 Moisture
+    # sensor_class: moisture
+    # unit_of_measurement: '%'
+    # value_template: '{{ (value_json.last_measurements[0]["moisture"]) | round(2) * 100 }}'
+  # - platform: rest
+    # resource: !secret plant0_url
+    # method: GET
+    # authentication: basic
+    # headers:
+      # Authorization: !secret plantlink
+    # verify_ssl: false
+    # name: Plant0 Fuel
+    # value_template: '{{ (value_json.last_measurements[0]["plant_fuel_level"]) | round(2) }}'
+  # - platform: rest
+    # resource: !secret plant0_url
+    # method: GET
+    # authentication: basic
+    # headers:
+      # Authorization: !secret plantlink
+    # verify_ssl: false
+    # name: Plant0 Signal
+    # unit_of_measurement: '%'
+    # value_template: '{{ (value_json.last_measurements[0]["signal"]) | round(2) * 100 }}'
+  # - platform: rest
+    # resource: !secret plant0_url
+    # method: GET
+    # authentication: basic
+    # headers:
+      # Authorization: !secret plantlink
+    # verify_ssl: false
+    # name: Plant0 Battery
+    # unit_of_measurement: '%'
+    # value_template: '{{ (value_json.last_measurements[0]["battery"]) | round(2) * 100 }}'
+  # - platform: rest
+    # resource: !secret plant0_url
+    # method: GET
+    # authentication: basic
+    # headers:
+      # Authorization: !secret plantlink
+    # verify_ssl: false
+    # name: Plant0 Last Updated
+    # value_template: '{{ value_json.last_measurements[0]["updated"] | timestamp_custom("%H:%M:%S %Y/%m/%d", true) }}'
+  # - platform: rest
+    # resource: !secret plant0_url
+    # method: GET
+    # authentication: basic
+    # headers:
+      # Authorization: !secret plantlink
+    # verify_ssl: false
+    # name: Plant0 Next Water
+    # value_template: '{{ value_json.last_measurements[0]["predicted_water_needed"] | timestamp_custom("%H:%M:%S %Y/%m/%d", true) }}'

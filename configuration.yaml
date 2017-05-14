@@ -8,13 +8,13 @@ homeassistant:
   customize: !include_dir_merge_named customization
 
 recorder:
-  purge_days: 30
+  purge_days: 14
 
 ## Features ##
 # Enables the frontend
 frontend:
 # Checks for available updates
-updater:
+#updater:
 # Discover some devices automatically
 discovery:
 # Allows you to issue voice commands from the frontend in enabled browsers
@@ -37,6 +37,9 @@ http:
   api_password: !secret http_password
   ssl_certificate: !secret ssl_certificate
   ssl_key: !secret ssl_key
+# Sensor
+sensor: !include sensor.yaml
+
 ## Scripts ##
 script: !include_dir_merge_list scripts
 ## Scenes ##
@@ -47,140 +50,35 @@ automation: !include_dir_merge_list automation
 input_boolean: !include input_boolean.yaml
 input_slider: !include input_slider.yaml
 input_select: !include input_select.yaml
+cover: !include cover.yaml
 
 ## Configurations ##
+config:
+
 zwave:
   usb_path: /dev/zwave
   config_path: /srv/homeassistant/src/open-zwave-control-panel/config
   autoheal: false
   polling_interval: 60000
   
-zigbee:
-  device: /dev/ttyUSB0
-  baud: 115200
+# zha:
+  # usb_path: /dev/ttyUSB0
+  # database_path: /home/homeassistant/.homeassistant/zigbee.db
 
 notify:
   - name: pushbullet
     platform: pushbullet
     api_key: !secret pushbullet
 
-# Weather Prediction
-sensor:
-  - platform: speedtest
-    minute:
-      - 0
-      - 30
-    monitored_conditions:
-      - ping
-      - download
-      - upload
-  - platform: wunderground
-    api_key: !secret wunderground
-    monitored_conditions:
-      - dewpoint_f
-      - feelslike_f
-      - precip_1hr_in
-      - precip_today_in
-      - pressure_in
-      - pressure_trend
-      - relative_humidity
-      - temp_f
-      - UV
-      - visibility_mi
-      - weather
-      - wind_degrees
-      - wind_dir
-      - wind_gust_mph
-      - wind_mph
-  - platform: rest
-    resource: !secret plant0_url
-    method: GET
-    authentication: basic
-    headers:
-      Authorization: !secret plantlink
-    verify_ssl: false
-    name: Plant0 Name
-    value_template: '{{ value_json.name }}'
-  - platform: rest
-    resource: !secret plant0_url
-    method: GET
-    authentication: basic
-    headers:
-      Authorization: !secret plantlink
-    verify_ssl: false
-    name: Plant0 Status
-    value_template: >
-      {% if value_json.status | int == 0 %}Too Dry
-      {% elif value_json.status | int == 1 %}Dry
-      {% elif value_json.status | int == 2 %}Optimal
-      {% elif value_json.status | int == 3 %}Wet
-      {% elif value_json.status | int == 4 %}Too Wet
-      {% else %}value_json.status{% endif %}
-  - platform: rest
-    resource: !secret plant0_url
-    method: GET
-    authentication: basic
-    headers:
-      Authorization: !secret plantlink
-    verify_ssl: false
-    name: Plant0 Moisture
-    sensor_class: moisture
-    unit_of_measurement: '%'
-    value_template: '{{ (value_json.last_measurements[0]["moisture"]) | round(2) * 100 }}'
-  - platform: rest
-    resource: !secret plant0_url
-    method: GET
-    authentication: basic
-    headers:
-      Authorization: !secret plantlink
-    verify_ssl: false
-    name: Plant0 Fuel
-    value_template: '{{ (value_json.last_measurements[0]["plant_fuel_level"]) | round(2) }}'
-  - platform: rest
-    resource: !secret plant0_url
-    method: GET
-    authentication: basic
-    headers:
-      Authorization: !secret plantlink
-    verify_ssl: false
-    name: Plant0 Signal
-    unit_of_measurement: '%'
-    value_template: '{{ (value_json.last_measurements[0]["signal"]) | round(2) * 100 }}'
-  - platform: rest
-    resource: !secret plant0_url
-    method: GET
-    authentication: basic
-    headers:
-      Authorization: !secret plantlink
-    verify_ssl: false
-    name: Plant0 Battery
-    unit_of_measurement: '%'
-    value_template: '{{ (value_json.last_measurements[0]["battery"]) | round(2) * 100 }}'
-  - platform: rest
-    resource: !secret plant0_url
-    method: GET
-    authentication: basic
-    headers:
-      Authorization: !secret plantlink
-    verify_ssl: false
-    name: Plant0 Last Updated
-    value_template: '{{ value_json.last_measurements[0]["updated"] | timestamp_custom("%H:%M:%S %Y/%m/%d", true) }}'
-  - platform: rest
-    resource: !secret plant0_url
-    method: GET
-    authentication: basic
-    headers:
-      Authorization: !secret plantlink
-    verify_ssl: false
-    name: Plant0 Next Water
-    value_template: '{{ value_json.last_measurements[0]["predicted_water_needed"] | timestamp_custom("%H:%M:%S %Y/%m/%d", true) }}'
 
 # Text to speech
 tts:
   platform: google
 
 device_tracker:
-  platform: owntracks
+  - platform: owntracks
+  - platform: bluetooth_tracker
+    device_id: hci0
 
 mqtt:
   broker: m13.cloudmqtt.com
@@ -234,9 +132,6 @@ light:
   platform: osramlightify
   host: 192.168.1.130
   scan_interval: 5
-
-#wink:
-#  access_token: !secret wink
 
 nest:
   client_id: !secret nest_client_id

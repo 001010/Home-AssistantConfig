@@ -1,0 +1,14 @@
+  - alias: "Kristine's Home"
+    trigger:
+      - platform: state
+        entity_id: device_tracker.kristine_bt
+        to: 'home'
+    condition:
+      - condition: state
+        entity_id: device_tracker.tyler_bt
+        state: 'home'
+    action:
+      - service: notify.pushbullet
+        data_template:
+          title: "Kristine's Home!"
+          message: "Kristine's Home!"

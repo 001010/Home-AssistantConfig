@@ -1,4 +1,11 @@
 # Nest stuff    
+  climate.entryway:
+    friendly_name: "Thermostat"
+    entity_picture: http://wreckage.johndenverschoolofflight.com/hass/nest.png
+    min_temp: 55
+    max_temp: 80
+    unit_of_measurement: °F
+  
   sensor.entryway_thermostat_temperature:
     icon: mdi:nest-thermostat
   sensor.entryway_thermostat_humidity:
