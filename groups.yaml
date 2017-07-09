@@ -161,21 +161,21 @@
     - sensor.multisensorb_luminance
     - sensor.multisensorb_relative_humidity
     - sensor.multisensorb_temperature
-    - sensor.multisensorb_power
+    - sensor.zwave_multisensorb_battery
   Entryway Sensor:
     entities:
     - binary_sensor.multisensore_sensor
     - sensor.multisensore_luminance
     - sensor.multisensore_relative_humidity
     - sensor.multisensore_temperature
-    - sensor.multisensore_power
+    - sensor.zwave_multisensore_battery
   Front Porch Sensor:
     entities:
     - binary_sensor.multisensorf_sensor
     - sensor.multisensorf_luminance
     - sensor.multisensorf_relative_humidity
     - sensor.multisensorf_temperature
-    - sensor.multisensorf_power
+    - sensor.zwave_multisensorf_battery
   Bedroom Sensor:
     entities:
     - input_slider.bedroom_humidity
@@ -185,11 +185,11 @@
     - sensor.bedroomsensor_relative_humidity
     - sensor.bedroomsensor_ultraviolet
     - sensor.bedroomsensor_burglar
-    - sensor.bedroomsensor_power
+    - sensor.zwave_bedroomsensor_battery
   Water Sensor:
     entities:
     - sensor.watersensor_flood
-    - sensor.watersensor_power
+    - sensor.zwave_watersensor_battery
   Stair Lights:
     icon: mdi:stairs
     entities:

@@ -20,6 +20,8 @@
     emulated_hue: true
   light.rgbw_stairs:
     friendly_name: "Stair Lights"
+  light.rgbw_desk:
+    friendly_name: "Desk Light"
   switch.frontporchlight_switch:
     friendly_name: "Front Porch Light"
     emulated_hue_name: "front porch light"

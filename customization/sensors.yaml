@@ -73,7 +73,7 @@
     emulated_hue: true
     icon: mdi:water-percent
     
-  sensor.watersensor_flood_14_5:
+  sensor.watersensor_flood:
     friendly_name: "Leak Sensor"
     icon: mdi:cup-water
   sensor.zwave_watersensor_battery:

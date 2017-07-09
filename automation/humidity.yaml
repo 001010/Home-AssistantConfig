@@ -1,7 +1,7 @@
   # - alias: "Master Bedroom Humidity ON"
     # trigger:
       # - platform: state
-        # entity_id: sensor.bedroomsensor_relative_humidity_15_5
+        # entity_id: sensor.bedroomsensor_relative_humidity
     # action:
       # - service: notify.pushbullet
         # data_template:

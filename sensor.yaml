@@ -34,30 +34,30 @@
   - platform: template
     sensors:
       zwave_bedroomsensor_battery:
-        unit_of_measurement: '%'
-        friendly_name: "Battery Level"
-        icon_template: mdi:battery
         value_template: '{{ states.zwave.bedroomsensor.attributes.battery_level }}'
+        unit_of_measurement: '%'
+        friendly_name: "Battery Level"
+        icon_template: mdi:battery
       zwave_multisensorb_battery:
-        unit_of_measurement: '%'
-        friendly_name: "Battery Level"
-        icon_template: mdi:battery
         value_template: '{{ states.zwave.multisensorb.attributes.battery_level }}'
+        unit_of_measurement: '%'
+        friendly_name: "Battery Level"
+        icon_template: mdi:battery
       zwave_multisensore_battery:
-        unit_of_measurement: '%'
-        friendly_name: "Battery Level"
-        icon_template: mdi:battery
         value_template: '{{ states.zwave.multisensore.attributes.battery_level }}'
+        unit_of_measurement: '%'
+        friendly_name: "Battery Level"
+        icon_template: mdi:battery
       zwave_multisensorf_battery:
-        unit_of_measurement: '%'
-        friendly_name: "Battery Level"
-        icon_template: mdi:battery
         value_template: '{{ states.zwave.multisensorf.attributes.battery_level }}'
-      zwave_watersensor_battery:
         unit_of_measurement: '%'
         friendly_name: "Battery Level"
         icon_template: mdi:battery
+      zwave_watersensor_battery:
         value_template: '{{ states.zwave.watersensor.attributes.battery_level }}'
+        unit_of_measurement: '%'
+        friendly_name: "Battery Level"
+        icon_template: mdi:battery
 #Google Travel
   - platform: google_travel_time
     name: Tyler to Work
