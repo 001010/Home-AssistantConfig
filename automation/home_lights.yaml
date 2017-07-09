@@ -6,13 +6,13 @@
     action:
       - service: light.turn_on
         entity_id:
-        - light.livingroomdimmer_level_9_0
+        - light.livingroomdimmer_level
         data:
-          brightness: 39
+          brightness: 40
       - service: light.turn_off
         entity_id:
-        - light.kitchendimmer_level_8_0
-        - light.diningdimmer_level_11_0
+        - light.kitchendimmer_level
+        - light.diningdimmer_level
       - service: input_boolean.turn_off
         entity_id:
         - input_boolean.night_tv_mode

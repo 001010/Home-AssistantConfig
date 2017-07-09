@@ -6,13 +6,13 @@
     action:
       - service: light.turn_on
         entity_id:
-          - light.livingroomdimmer_level_9_0
-          - light.kitchendimmer_level_8_0
+          - light.livingroomdimmer_level
+          - light.kitchendimmer_level
         data:
           brightness: 255
       - service: switch.turn_on
         entity_id:
-          - switch.frontporchlight_switch_12_0
+          - switch.frontporchlight_switch
       - service: notify.pushbullet
         data_template:
           title: "Sunset"
@@ -24,8 +24,8 @@
     action:
       - service: switch.turn_off
         entity_id:
-          - switch.frontporchlight_switch_12_0
-          - switch.outdoorswitch_switch_2_0
+          - switch.frontporchlight_switch
+          - switch.outdoorswitch_switch
   - alias: "Turn on holiday light when sunset"
     trigger:
       platform: sun
@@ -33,4 +33,4 @@
     action:
       - service: switch.turn_on
         entity_id:
-        - switch.outdoorswitch_switch_2_0
+        - switch.outdoorswitch_switch

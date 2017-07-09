@@ -103,23 +103,9 @@ zone 2:
   icon: mdi:worker
 
 zone 3:
-  name: Kristine's Work
-  latitude: !secret kristines_work_latitude
-  longitude: !secret kristines_work_longitude
-  radius: 100
-  icon: mdi:worker
-
-zone 4:
-  name: Kindercare
-  latitude: !secret daycare_latitude
-  longitude: !secret daycare_longitude
-  radius: 100
-  icon: mdi:human-child
-
-zone 5:
   name: Elementry School
-  latitude: !secret school_latitude
-  longitude: !secret school_longitude
+  latitude: !secret saywer_school_latitude
+  longitude: !secret saywer_school_longitude
   radius: 250
   icon: mdi:school
 

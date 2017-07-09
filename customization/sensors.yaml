@@ -1,71 +1,71 @@
 # Sensors  
-  binary_sensor.multisensorb_sensor_7_0:
+  binary_sensor.multisensorb_sensor:
     friendly_name: "Upstairs Motion"
     icon: mdi:account-switch
-  sensor.multisensorb_temperature_7_1:
+  sensor.multisensorb_temperature:
     friendly_name: "Upstairs Temperature"
     icon: mdi:temperature-fahrenheit
-  sensor.multisensorb_luminance_7_3:
+  sensor.multisensorb_luminance:
     friendly_name: "Upstairs Lux"
     icon: mdi:brightness-6
-  sensor.multisensorb_relative_humidity_7_5:
+  sensor.multisensorb_relative_humidity:
     friendly_name: "Upstairs Humidity"
     icon: mdi:water-percent
-  sensor.zwave_multisensorb_battery_level_7:
+  sensor.zwave_multisensorb_battery:
     friendly_name: "Upstairs Battery"
     icon: mdi:battery
 
-  binary_sensor.multisensorf_sensor_6_0:
+  binary_sensor.multisensorf_sensor:
     friendly_name: "Front Motion"
     icon: mdi:account-switch
-  sensor.multisensorf_temperature_6_1:
+  sensor.multisensorf_temperature:
     friendly_name: "Front Temperature"
     icon: mdi:temperature-fahrenheit
-  sensor.multisensorf_luminance_6_3:
+  sensor.multisensorf_luminance:
     friendly_name: "Front Lux"
     icon: mdi:brightness-6
-  sensor.multisensorf_relative_humidity_6_5:
+  sensor.multisensorf_relative_humidity:
     friendly_name: "Front Humidity"
     icon: mdi:water-percent
-  sensor.zwave_multisensorf_battery_level_6:
+  sensor.zwave_multisensorf_battery:
     friendly_name: "Front Battery"
     icon: mdi:battery
 
-  binary_sensor.multisensore_sensor_5_0:
+  binary_sensor.multisensore_sensor:
     friendly_name: "Entryway Motion"
     icon: mdi:account-switch
-  sensor.multisensore_temperature_5_1:
+  sensor.multisensore_temperature:
     friendly_name: "Entryway Temperature"
     icon: mdi:temperature-fahrenheit
-  sensor.multisensore_luminance_5_3:
+  sensor.multisensore_luminance:
     friendly_name: "Entryway Lux"
     icon: mdi:brightness-6
-  sensor.multisensore_relative_humidity_5_5:
+  sensor.multisensore_relative_humidity:
     friendly_name: "Entryway Humidity"
     icon: mdi:water-percent
-  sensor.zwave_multisensore_battery_level_5:
+  sensor.zwave_multisensore_battery:
     friendly_name: "Entryway Battery"
     icon: mdi:battery
 
-  binary_sensor.bedroomsensor_sensor_15_0:
+  binary_sensor.bedroomsensor_sensor:
     friendly_name: "Bedroom Motion"
     icon: mdi:account-switch
-  sensor.bedroomsensor_temperature_15_1:
+  sensor.bedroomsensor_temperature:
     friendly_name: "Bedroom Temperature"
     icon: mdi:temperature-fahrenheit
-  sensor.bedroomsensor_luminance_15_3:
+  sensor.bedroomsensor_luminance:
     friendly_name: "Bedroom Lux"
     icon: mdi:brightness-6
-  sensor.bedroomsensor_relative_humidity_15_5:
+  sensor.bedroomsensor_relative_humidity:
     friendly_name: "Bedroom Humidity"
     icon: mdi:water-percent
-  sensor.bedroomsensor_ultraviolet_15_27:
+  sensor.bedroomsensor_ultraviolet:
     friendly_name: "Bedroom UV"
     icon: mdi:radioactive
-  sensor.bedroomsensor_burglar_15_10:
+  sensor.bedroomsensor_burglar:
     friendly_name: "Bedroom Tamper"
     icon: mdi:bullhorn
-  sensor.zwave_bedroomsensor_battery_level_15:
+  sensor.zwave_bedroomsensor_battery:
     friendly_name: "Bedroom Battery"
     icon: mdi:battery
   input_slider.bedroom_humidity:
@@ -76,7 +76,7 @@
   sensor.watersensor_flood_14_5:
     friendly_name: "Leak Sensor"
     icon: mdi:cup-water
-  sensor.zwave_watersensor_battery_level_14:
+  sensor.zwave_watersensor_battery:
     friendly_name: "Leak Battery"
     icon: mdi:battery
     

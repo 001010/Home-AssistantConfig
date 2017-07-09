@@ -12,7 +12,7 @@
   - alias: "Humidity Leak Alarm"
     trigger:
       - platform: numeric_state
-        entity_id: sensor.watersensor_flood_14_5
+        entity_id: sensor.watersensor_flood
         above: 250
     action:
       - service: notify.pushbullet

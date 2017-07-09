@@ -2,12 +2,12 @@
 ## Must use 'emulated_hue: true' on each item then restart the HA service. Reloading core config and groups will not make this work.
 
 # Switches
-  switch.humidifier_switch_13_0:
+  switch.humidifier_switch:
     friendly_name: "Humidifer"
     emulated_hue_name: "Humidifier"
     emulated_hue: true
     icon: mdi:water
-  switch.outdoorswitch_switch_2_0:
+  switch.outdoorswitch_switch:
     friendly_name: "Holiday Lights"
     emulated_hue_name: "holiday lights"
     emulated_hue: true

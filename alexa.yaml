@@ -41,11 +41,11 @@
           {% if is_state('cover.2car_garage_door_opener','open') %}
             your garage door is currently open. Also,
           {% endif %}
-          {%- if ((((float(states('sensor.bedroomsensor_temperature_15_1'))+float(states('sensor.multisensorb_temperature_7_1')))/2)-float(states('sensor.entryway_thermostat_temperature'))) < -2) %} upstairs appears to be several degrees colder than your comfort level settings. I would suggest closing some windows and turning on your house fan. {%- elif ((((float(states('sensor.bedroomsensor_temperature_15_1'))+float(states('sensor.multisensorb_temperature_7_1')))/2)-float(states('sensor.entryway_thermostat_temperature'))) > 2) and (float(states('sensor.sensor.multisensorf_temperature_6_1')) < float(states('sensor.entryway_thermostat_temperature'))) %} upstairs appears to be several degrees warmer than your comfort level settings. I would suggest opening some windows and turning on your house fan.{% else %}
+          {%- if ((((float(states('sensor.bedroomsensor_temperature'))+float(states('sensor.multisensorb_temperature')))/2)-float(states('sensor.entryway_thermostat_target'))) < -2) %} upstairs appears to be several degrees colder than your comfort level settings. I would suggest closing some windows and turning on your house fan. {%- elif ((((float(states('sensor.bedroomsensor_temperature'))+float(states('sensor.multisensorb_temperature')))/2)-float(states('sensor.entryway_thermostat_target'))) > 2) and (float(states('sensor.sensor.multisensorf_temperature')) < float(states('sensor.entryway_thermostat_target'))) %} upstairs appears to be several degrees warmer than your comfort level settings. I would suggest opening some windows and turning on your house fan.{% else %}
             the house appears to be within a comfortable range of {{ ((
-            float(states('sensor.bedroomsensor_temperature_15_1'))+
-            float(states('sensor.multisensorb_temperature_7_1'))+
-            float(states('sensor.entryway_thermostat_temperature'))+
-            float(states('sensor.multisensore_temperature_5_1'))
+            float(states('sensor.bedroomsensor_temperature'))+
+            float(states('sensor.multisensorb_temperature'))+
+            float(states('sensor.entryway_thermostat_target'))+
+            float(states('sensor.multisensore_temperature'))
             )/4) | round (1) }} degrees on average.
           {% endif %}

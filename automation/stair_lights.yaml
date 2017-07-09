@@ -27,10 +27,10 @@
     initial_state: true
     trigger:
       - platform: state
-        entity_id: binary_sensor.multisensore_sensor_5_0
+        entity_id: binary_sensor.multisensore_sensor
         state: 'on'
       - platform: state
-        entity_id: binary_sensor.multisensorb_sensor_7_0
+        entity_id: binary_sensor.multisensorb_sensor
         state: 'on'
     condition:
       condition: and
@@ -38,10 +38,10 @@
         - condition: template
           value_template: '{{ states.sun.sun.attributes.elevation < 4 }}'
         # - condition: numeric_state
-          # entity_id: sensor.multisensorb_luminance_7_3
+          # entity_id: sensor.multisensorb_luminance
           # below: 5
         # - condition: numeric_state
-          # entity_id: sensor.multisensore_luminance_5_3
+          # entity_id: sensor.multisensore_luminance
           # below: 5
     action:
       - service: automation.turn_off
@@ -61,10 +61,10 @@
   - alias: "motion_stair_lights_off"
     trigger:
       - platform: state
-        entity_id: binary_sensor.multisensore_sensor_5_0
+        entity_id: binary_sensor.multisensore_sensor
         to: 'off'
       - platform: state
-        entity_id: binary_sensor.multisensorb_sensor_7_0
+        entity_id: binary_sensor.multisensorb_sensor
         to: 'off'
     condition:
       condition: and
@@ -73,10 +73,10 @@
           entity_id: input_boolean.stair_lights_on
           state: 'on'
         - condition: state
-          entity_id: binary_sensor.multisensore_sensor_5_0
+          entity_id: binary_sensor.multisensore_sensor
           state: 'off'
         - condition: state
-          entity_id: binary_sensor.multisensorb_sensor_7_0
+          entity_id: binary_sensor.multisensorb_sensor
           state: 'off'
     action:
       - delay: 00:01:50

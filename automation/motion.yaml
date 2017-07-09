@@ -1,7 +1,7 @@
   - alias: "Upstairs Motion Notification"
     trigger:
       - platform: state
-        entity_id: binary_sensor.multisensorb_sensor_7_0
+        entity_id: binary_sensor.multisensorb_sensor
         to: 'on'
     condition:
       - condition: state

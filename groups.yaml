@@ -68,27 +68,26 @@
     - group.water_sensor
   Kitchen Lights:
     entities:
-    - light.kitchendimmer_level_8_0
-    - light.diningdimmer_level_11_0
+    - light.kitchendimmer_level
+    - light.diningdimmer_level
   Front Porch Lights:
     name: Front Porch Lights
     view: no
     entities:
-    - switch.frontporchlight_switch_12_0
-    - switch.outdoorswitch_switch_2_0
+    - switch.frontporchlight_switch
+    - switch.outdoorswitch_switch
   Front Porch:
     name: Front Porch
     view: yes
     icon: mdi:pine-tree-box
     entities:
-    - switch.frontporchlight_switch_12_0
+    - switch.frontporchlight_switch
     - sensor.pws_temp_f
     - sensor.pws_relative_humidity
     - sensor.pws_weather
     - sensor.pws_pressure_in
     - group.front_porch_lights
     - group.front_porch_sensor
-    - group.plant0
   Stairs:
     name: Stairs
     view: yes
@@ -108,7 +107,7 @@
     view: yes
     icon: mdi:theater
     entities:
-    - light.livingroomdimmer_level_9_0
+    - light.livingroomdimmer_level
     - media_player.plex_web_chrome
     - media_player.roku_yy009v221044
     - media_player.living_room
@@ -118,8 +117,8 @@
     icon: mdi:human-male-female
     entities:
     - group.bedroom_sensor
-    - light.lampdimmer_level_10_0
-    - switch.humidifier_switch_13_0
+    - light.lampdimmer_level
+    - switch.humidifier_switch
     - group.humidifier
   Garage:
     name: Garage
@@ -158,59 +157,59 @@
     - sensor.entryway_thermostat_hvac_state
   Upstairs Sensor:
     entities:
-    - binary_sensor.multisensorb_sensor_7_0
-    - sensor.multisensorb_luminance_7_3
-    - sensor.multisensorb_relative_humidity_7_5
-    - sensor.multisensorb_temperature_7_1
-    - sensor.zwave_multisensorb_battery_level_7
+    - binary_sensor.multisensorb_sensor
+    - sensor.multisensorb_luminance
+    - sensor.multisensorb_relative_humidity
+    - sensor.multisensorb_temperature
+    - sensor.multisensorb_power
   Entryway Sensor:
     entities:
-    - binary_sensor.multisensore_sensor_5_0
-    - sensor.multisensore_luminance_5_3
-    - sensor.multisensore_relative_humidity_5_5
-    - sensor.multisensore_temperature_5_1
-    - sensor.zwave_multisensore_battery_level_5
+    - binary_sensor.multisensore_sensor
+    - sensor.multisensore_luminance
+    - sensor.multisensore_relative_humidity
+    - sensor.multisensore_temperature
+    - sensor.multisensore_power
   Front Porch Sensor:
     entities:
-    - binary_sensor.multisensorf_sensor_6_0
-    - sensor.multisensorf_luminance_6_3
-    - sensor.multisensorf_relative_humidity_6_5
-    - sensor.multisensorf_temperature_6_1
-    - sensor.zwave_multisensorf_battery_level_6
+    - binary_sensor.multisensorf_sensor
+    - sensor.multisensorf_luminance
+    - sensor.multisensorf_relative_humidity
+    - sensor.multisensorf_temperature
+    - sensor.multisensorf_power
   Bedroom Sensor:
     entities:
     - input_slider.bedroom_humidity
-    - binary_sensor.bedroomsensor_sensor_15_0
-    - sensor.bedroomsensor_temperature_15_1
-    - sensor.bedroomsensor_luminance_15_3
-    - sensor.bedroomsensor_relative_humidity_15_5
-    - sensor.bedroomsensor_ultraviolet_15_27
-    - sensor.bedroomsensor_burglar_15_10
-    - sensor.zwave_bedroomsensor_battery_level_15
+    - binary_sensor.bedroomsensor_sensor
+    - sensor.bedroomsensor_temperature
+    - sensor.bedroomsensor_luminance
+    - sensor.bedroomsensor_relative_humidity
+    - sensor.bedroomsensor_ultraviolet
+    - sensor.bedroomsensor_burglar
+    - sensor.bedroomsensor_power
   Water Sensor:
     entities:
-    - sensor.watersensor_flood_14_5
-    - sensor.zwave_watersensor_battery_level_14
+    - sensor.watersensor_flood
+    - sensor.watersensor_power
   Stair Lights:
     icon: mdi:stairs
     entities:
     - light.rgbw_stairs
-  Plant0:
-    name: Plant
-    entities:
-    - sensor.Plant0_name
-    - sensor.Plant0_status
-    - sensor.Plant0_fuel
-    - sensor.Plant0_moisture
-    - sensor.Plant0_signal
-    - sensor.Plant0_battery
-    - sensor.plant0_next_water
-    - sensor.Plant0_last_updated
+  # Plant0:
+    # name: Plant
+    # entities:
+    # - sensor.Plant0_name
+    # - sensor.Plant0_status
+    # - sensor.Plant0_fuel
+    # - sensor.Plant0_moisture
+    # - sensor.Plant0_signal
+    # - sensor.Plant0_battery
+    # - sensor.plant0_next_water
+    # - sensor.Plant0_last_updated
   Humidifer:
     icon: mdi:water
     entities:
-    - switch.humidifier_switch_13_0
-    - sensor.watersensor_flood_14_5
+    - switch.humidifier_switch
+    - sensor.watersensor_flood
   track_Tyler:
     name: Tyler
     entities:
