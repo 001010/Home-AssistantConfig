@@ -1,0 +1,3 @@
+  - platform: mqtt
+    state_topic: dummy/custom_ui/floorplan/sensor
+    name: Floorplan

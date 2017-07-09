@@ -2,3 +2,19 @@
     username: !secret myq_username
     password: !secret myq_password
     brand: chamberlain
+    
+  - platform: template
+    covers:
+      garage_door:
+        friendly_name: "Garage Door"
+        value_template: "{{ is_state('cover.2car_garage_door_opener','open') }}"
+        open_cover:
+          service: switch.turn_on
+          entity_id: cover.2car_garage_door_opener
+        close_cover:
+          service: switch.turn_off
+          entity_id: cover.2car_garage_door_opener
+        stop_cover:
+          service: switch.turn_on
+          entity_id: cover.2car_garage_door_opener
+        icon_template: "{% if not is_state('cover.2car_garage_door_opener', 'closed') %}mdi:garage-open{% else %}mdi:garage{% endif %}"

@@ -19,6 +19,7 @@
     - group.master_bedroom
     - group.office
     - group.garage
+    - group.zones
     - updater.updater
     - group.speedtest
     - group.ssl_certificate
@@ -59,6 +60,7 @@
     - sensor.tyler_to_home
     - sensor.tyler_to_work
     - sensor.kristine_to_home
+    - binary_sensor.floorplan
   Kitchen:
     name: Kitchen
     view: yes
@@ -126,6 +128,7 @@
     icon: mdi:garage
     entities: 
     - cover.2car_garage_door_opener
+    - cover.garage_door
   People:
     name: Humans
     view: yes
@@ -239,3 +242,8 @@
     - sensor.speedtest_ping
     - sensor.speedtest_download
     - sensor.speedtest_upload
+    
+  zones:
+    name: Zones
+    entities:
+      - binary_sensor.floorplan
