@@ -26,5 +26,5 @@
     name: Bedroom_Humidity
     initial: 30
     min: 25
-    max: 55
+    max: 75
     step: 1

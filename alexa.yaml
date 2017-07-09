@@ -1,9 +1,51 @@
   intents:
-    ActivateSceneIntent:
-      action:
-        service: scene.turn_on
-        data_template:
-          entity_id: scene.{{ Scene | replace(" ", "_") }}
+    WhereAreWeIntent:
       speech:
         type: plaintext
-        text: !include alexa_confirm.yaml
+        text: >
+          {%- if is_state("device_tracker.tyler_bt", "home") and 
+          is_state("device_tracker.kristine_bt", "home") -%}
+          I see that you are both home.
+          {%- else -%}
+          Tyler is {% if is_state("device_tracker.tyler_bt", "home") %} 
+          {{ states("device_tracker.tyler_bt") }} 
+          {%- else -%} at {{ states("device_tracker.tyler_tyler") }} 
+          {%- endif %} and Kristine is {% if is_state("device_tracker.kristine_bt", "home") %}
+          {{ states("device_tracker.kristine_bt") }} 
+          {%- else -%} at {{ states("device_tracker.kristine_kristine") }} 
+          {% endif %}
+          {% endif %}
+
+    LocateIntent:
+      speech:
+        type: plaintext
+        text: >
+          {%- if (User.lower() == 'tyler') -%}
+            Tyler is {% if is_state('device_tracker.tyler_bt','home') -%} {{ states("device_tracker.tyler_bt") }}
+              {% elif (states("device_tracker.tyler_tyler") != 'not_home') -%} at {{ states("device_tracker.tyler_tyler") }}
+              {% else -%} not home, but he is approximately {{ states("sensor.tyler_to_home") }} minutes from us.
+            {% endif %}
+          {%- elif (User.lower() == 'christine') or (User.lower() == 'kristine') -%}
+            Kristine is {% if is_state('device_tracker.kristine_bt','home') -%} {{ states("device_tracker.kristine_bt") }}
+              {% elif (states("device_tracker.kristine_kristine") != 'not_home') -%} at {{ states("device_tracker.kristine_kristine") }}
+              {% else -%} not home, but she is approximately {{ states("sensor.kristine_to_home") }} minutes from us.
+            {% endif %}
+          {% else %}
+            I am sorry, I do not know who {{ User.lower() }} is.
+          {% endif %}
+    UpdateAllIntent:
+      speech:
+        type: plaintext
+        text: >
+          An update for this moment is that 
+          {% if is_state('cover.2car_garage_door_opener','open') %}
+            your garage door is currently open. Also,
+          {% endif %}
+          {%- if ((((float(states('sensor.bedroomsensor_temperature_15_1'))+float(states('sensor.multisensorb_temperature_7_1')))/2)-float(states('sensor.entryway_thermostat_temperature'))) < -2) %} upstairs appears to be several degrees colder than your comfort level settings. I would suggest closing some windows and turning on your house fan. {%- elif ((((float(states('sensor.bedroomsensor_temperature_15_1'))+float(states('sensor.multisensorb_temperature_7_1')))/2)-float(states('sensor.entryway_thermostat_temperature'))) > 2) and (float(states('sensor.sensor.multisensorf_temperature_6_1')) < float(states('sensor.entryway_thermostat_temperature'))) %} upstairs appears to be several degrees warmer than your comfort level settings. I would suggest opening some windows and turning on your house fan.{% else %}
+            the house appears to be within a comfortable range of {{ ((
+            float(states('sensor.bedroomsensor_temperature_15_1'))+
+            float(states('sensor.multisensorb_temperature_7_1'))+
+            float(states('sensor.entryway_thermostat_temperature'))+
+            float(states('sensor.multisensore_temperature_5_1'))
+            )/4) | round (1) }} degrees on average.
+          {% endif %}

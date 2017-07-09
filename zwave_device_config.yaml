@@ -4,13 +4,13 @@ binary_sensor.bedroomsensor_sensor_15_0:
   polling_intensity: 0
 binary_sensor.multisensorb_sensor_7_0:
   ignored: false
-  polling_intensity: 0
+  polling_intensity: 1
 binary_sensor.multisensore_sensor_5_0:
   ignored: false
-  polling_intensity: 0
+  polling_intensity: 1
 sensor.bedroomsensor_sourcenodeid_15_2:
   ignored: true
-  polling_intensity: 0
+  polling_intensity: 1
 sensor.watersensor_alarm_type_14_0:
   ignored: true
-  polling_intensity: 0
+  polling_intensity: 1
