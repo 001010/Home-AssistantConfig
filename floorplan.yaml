@@ -1,4 +1,114 @@
-## Floorplan
-  name: Floorplan
-  image: /local/custom_ui/floorplan/floorplan.svg
-  stylesheet: /local/custom_ui/floorplan/floorplan.css
+      name: Floorplan
+      image: /local/custom_ui/floorplan/floorplan.svg
+      stylesheet: /local/custom_ui/floorplan/floorplan.css
+      
+      # These options are optional
+      # warnings:            # enable warnings (to find out why things might ot be working correctly)
+      # pan_zoom:            # enable experimental panning / zooming
+      # hide_app_toolbar:    # hide the application toolbar (when used as a custom panel)
+
+      # last_motion_entity: sensor.template_last_motion
+      # last_motion_class: last-motion
+
+      groups:
+
+        - name: Sensors
+          entities:
+             - sensor.entryway_thermostat_temperature
+          text_template: '${entity.state ? entity.state : "unknown"}'
+          # An example of rounding up a number, i.e. a temperature of 90.1 becomes 91
+          # text_template: '${entity.state ? Math.ceil(entity.state) : "undefined"}'  
+          class_template: '
+            var temp = parseFloat(entity.state.replace("°", ""));
+            if (temp < 10)
+              return "temp-low";
+            else if (temp < 30)
+              return "temp-medium";
+            else
+              return "temp-high";
+            '
+
+        - name: Lights
+          entities:
+             - light.livingroomdimmer_level
+             - light.diningdimmer_level
+             - light.kitchendimmer_level
+             - light.lampdimmer_level
+             - light.rgbw_desk
+             - light.rgbw_stairs
+          states:
+            - state: 'on'
+              class: 'light-on'
+            - state: 'off'
+              class: 'light-off'
+
+        - name: Switches
+          entities:
+             - switch.frontporchlight_switch
+             - switch.humidifier_switch
+             - switch.outdoorswitch_switch
+             
+        # - name: NVR
+          # entities:
+             # - binary_sensor.blue_iris_nvr
+          # text_template: '${(entity.state === "on") ? "online" : "offline"}'
+          # states:
+            # - state: 'off'
+              # class: 'danger-text'
+            # - state: 'on'
+              # class: 'success-text'
+
+        # - name: Alarm Panel
+          # entities:
+             # - alarm_control_panel.alarm
+          # states:
+            # - state: 'armed_away'
+              # class: 'alarm-armed'
+            # - state: 'armed_home'
+              # class: 'alarm-armed'
+            # - state: 'disarmed'
+              # class: 'alarm-disarmed'
+
+        - name: Binary sensors
+          entities:
+            - binary_sensor.bedroomsensor_sensor
+            - binary_sensor.multisensorb_sensor
+            - binary_sensor.multisensore_sensor
+            - binary_sensor.multisensorf_sensor
+          states:
+            - state: 'off'
+              class: 'info-background'
+            - state: 'on'
+              class: 'warning-background'
+          state_transitions:
+            - name: On to off
+              from_state: 'on'
+              to_state: 'off'
+              duration: 10
+
+        # - name: Cameras
+          # entities:
+            # - camera.hallway
+            # - camera.driveway
+            # - camera.front_door
+            # - camera.backyard
+          # states:
+            # - state: 'idle'
+              # class: 'camera-idle'
+              
+#        - name: thermostat_temp
+#          entities:
+#            - climate.downstairs
+#            - climate.upstairs
+#          text_template: '${entity.attributes.current_temperature ? entity.attributes.current_temperature : "undefined"}'
+#
+# The above text_template uses extended attributes from the climate.* objects to get current temperature.
+
+#        - name: text_states
+#          entities:
+#            - sensor.downstairs_thermostat_humidity
+#            - sensor.dark_sky_temperature
+#            - sensor.last_message
+#          text_template: '${entity.state ? entity.state.replace(/\s{2,}/g,"") : "undefined"}'
+#
+# The above text_template uses jQuery syntax to search and replace any instance of 2 consecutive (or more) spaces in a string of text.

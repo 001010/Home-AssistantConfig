@@ -19,7 +19,7 @@
     - group.master_bedroom
     - group.office
     - group.garage
-    - group.zones
+#    - group.zones
     - updater.updater
     - group.speedtest
     - group.ssl_certificate
