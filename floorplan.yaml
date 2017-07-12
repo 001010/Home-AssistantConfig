@@ -36,6 +36,8 @@
              - light.lampdimmer_level
              - light.rgbw_desk
              - light.rgbw_stairs
+             - switch.frontporchlight_switch
+             - switch.outdoorswitch_switch
           states:
             - state: 'on'
               class: 'light-on'
@@ -44,9 +46,7 @@
 
         - name: Switches
           entities:
-             - switch.frontporchlight_switch
              - switch.humidifier_switch
-             - switch.outdoorswitch_switch
              
         # - name: NVR
           # entities:
@@ -69,7 +69,7 @@
             # - state: 'disarmed'
               # class: 'alarm-disarmed'
 
-        - name: Binary sensors
+        - name: Motion sensors
           entities:
             - binary_sensor.bedroomsensor_sensor
             - binary_sensor.multisensorb_sensor
@@ -79,7 +79,7 @@
             - state: 'off'
               class: 'info-background'
             - state: 'on'
-              class: 'warning-background'
+              class: 'motion-background'
           state_transitions:
             - name: On to off
               from_state: 'on'
@@ -104,11 +104,11 @@
 #
 # The above text_template uses extended attributes from the climate.* objects to get current temperature.
 
-#        - name: text_states
-#          entities:
-#            - sensor.downstairs_thermostat_humidity
-#            - sensor.dark_sky_temperature
-#            - sensor.last_message
-#          text_template: '${entity.state ? entity.state.replace(/\s{2,}/g,"") : "undefined"}'
+       # - name: text_states
+         # entities:
+           # - sensor.entryway_thermostat_temperature
+           # - sensor.dark_sky_temperature
+           # - sensor.last_message
+         # text_template: '${entity.state ? entity.state.replace(/\s{2,}/g,"") : "undefined"}'
 #
 # The above text_template uses jQuery syntax to search and replace any instance of 2 consecutive (or more) spaces in a string of text.

@@ -9,6 +9,12 @@
         - light.livingroomdimmer_level
         data:
           brightness: 40
+      - service: light.turn_on
+        entity_id:
+        - light.kitchendimmer_level
+        - light.diningdimmer_level
+        data:
+          brightness: 255
       - service: light.turn_off
         entity_id:
         - light.kitchendimmer_level
