@@ -48,6 +48,7 @@
     icon: mdi:arrow-up-bold-box-outline
     entities:
     - group.upstairs_sensor
+    - switch.housefan_switch
   Office:
     name: Office
     view: yes

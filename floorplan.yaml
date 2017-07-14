@@ -30,10 +30,6 @@
 
         - name: Lights
           entities:
-             - light.livingroomdimmer_level
-             - light.diningdimmer_level
-             - light.kitchendimmer_level
-             - light.lampdimmer_level
              - light.rgbw_desk
              - light.rgbw_stairs
              - switch.frontporchlight_switch
@@ -44,9 +40,33 @@
             - state: 'off'
               class: 'light-off'
 
+        - name: Dimmers
+          entities:
+             - light.livingroomdimmer_level
+             - light.diningdimmer_level
+             - light.kitchendimmer_level
+             - light.lampdimmer_level
+          class_template: '
+            brightness = parseFloat(entity.attributes.value_index);
+            if (brightness<= 10)
+              return "light-off";
+            else if (brightness<= 80)
+              return "light-low";
+            else if (brightness<= 150)
+              return "light-med";
+            else
+              return "light-on";
+            '
+              
         - name: Switches
           entities:
              - switch.humidifier_switch
+             - switch.housefan_switch
+          states:
+            - state: 'on'
+              class: 'switch-on'
+            - state: 'off'
+              class: 'switch-off'
              
         # - name: NVR
           # entities:

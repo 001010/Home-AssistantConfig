@@ -98,12 +98,31 @@ svg, svg * {
 
 .light-off {
   fill: #C3B7F4 !important;
+  fill-opacity: 1 !important;
 }
-
+.light-low {
+  fill: #F8F6B9 !important;
+  fill-opacity: 0.3 !important;
+}
+.light-med {
+  fill: #F8F6B9 !important;
+  fill-opacity: 0.7 !important;
+}
 .light-on {
   fill: #F8F6B9 !important;
+  fill-opacity: 1 !important;
 }
 
+/* Switch */
+
+.switch-off {
+  fill: #999999 !important;
+  fill-opacity: 1 !important;
+}
+.switch-off {
+  fill: #55D400 !important;
+  fill-opacity: 1 !important;
+}
 /* Doorbell */
 
 .doorbell-off {

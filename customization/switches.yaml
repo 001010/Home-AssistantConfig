@@ -12,3 +12,8 @@
     emulated_hue_name: "holiday lights"
     emulated_hue: true
     icon: mdi:snowman
+  switch.housefan_switch:
+    friendly_name: "House Fan"
+    emulated_hue_name: "house fan"
+    emulated_hue: true
+    icon: mdi:fan
