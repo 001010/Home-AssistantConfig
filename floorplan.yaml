@@ -47,10 +47,10 @@
              - light.kitchendimmer_level
              - light.lampdimmer_level
           class_template: '
-            brightness = parseFloat(entity.attributes.value_index);
-            if (brightness<= 10)
+            brightness = parseFloat(entity.attributes.brightness);
+            if (brightness<= 50)
               return "light-off";
-            else if (brightness<= 80)
+            else if (brightness<= 100)
               return "light-low";
             else if (brightness<= 150)
               return "light-med";

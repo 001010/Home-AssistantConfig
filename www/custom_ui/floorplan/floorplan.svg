@@ -298,9 +298,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="8"
-     inkscape:cx="487.59474"
-     inkscape:cy="117.66254"
+     inkscape:zoom="2"
+     inkscape:cx="484.59486"
+     inkscape:cy="308.48768"
      inkscape:document-units="mm"
      inkscape:current-layer="layer3"
      showgrid="false"
@@ -1215,7 +1215,7 @@
        inkscape:label="#path4726" />
     <rect
        style="opacity:1;fill:#55d400;stroke:none;stroke-width:0.211;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-       id="humidifier_switch"
+       id="switch.humidifier_switch"
        width="2.9104166"
        height="1.9182291"
        x="96.809608"
