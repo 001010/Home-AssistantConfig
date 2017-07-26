@@ -58,17 +58,13 @@
         unit_of_measurement: '%'
         friendly_name: "Battery Level"
         icon_template: mdi:battery
+        
 #Google Travel
   - platform: google_travel_time
     name: Tyler to Work
     api_key: !secret google_travel_api_key
     origin: device_tracker.tyler_tyler
     destination: zone.tylers_work
-  - platform: google_travel_time
-    name: Kristine to Work
-    api_key: !secret google_travel_api_key
-    origin: device_tracker.kristine_kristine
-    destination: zone.kristines_work
   - platform: google_travel_time
     name: Tyler to Home
     api_key: !secret google_travel_api_key

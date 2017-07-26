@@ -1,7 +1,8 @@
   - alias: "Speed Test Update"
     trigger:
-      - platform: state
+      - platform: numeric_state
         entity_id: sensor.speedtest_upload
+        above: 0
     action:
       service: ifttt.trigger
       data_template: {"event":"Speedtest","value1":"{{states.sensor.speedtest_ping.state}}","value2":"{{states.sensor.speedtest_download.state}}","value3":"{{states.sensor.speedtest_upload.state}}"}

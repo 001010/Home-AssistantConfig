@@ -19,3 +19,18 @@
         data_template:
           title: "HUMIDIFIER LEAK!"
           message: "HUMIDIFIER LEAK DETECTED!"
+          
+  # - alias: "House Fan OFF on Temp"
+    # trigger:
+      # - platform: template
+        # entity_id: sensor.watersensor_flood
+        # value_template: "{% if (states('sensor.multisensorb_temperature') | float <= states('.sensor.entryway_thermostat_target') | float %}true{% endif %}"
+    # condition:
+      # - condition: state
+        # entity_id: switch.housefan_switch
+        # state: 'on'
+    # action:
+      # - service: switch.turn_off
+        # entity_id:
+        # - switch.housefan_switch
+         
